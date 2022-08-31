@@ -1,0 +1,13 @@
+snow:
+  name: SNOW
+  entities:
+  - sensor.snow_open
+  - sensor.snow_close
+  - sensor.snow_low
+  - sensor.snow_high
+  - sensor.snow_volume
+bme280:
+  name: BME280
+  entities:
+  - sensor.room_temperature
+  - sensor.room_humidity

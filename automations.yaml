@@ -1,0 +1,95 @@
+- id: '1661153613650'
+  alias: Wake up
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00:00
+  condition: []
+  action:
+  - repeat:
+      until:
+      - condition: and
+        conditions:
+        - condition: state
+          entity_id: light.home
+          attribute: brightness
+          state: 1
+        - condition: state
+          entity_id: light.home
+          attribute: color_temp
+          state: 500
+      sequence:
+      - service: light.turn_on
+        data:
+          brightness: 1
+          color_temp: 500
+        target:
+          area_id: home
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 1
+          milliseconds: 0
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      transition: 1800
+      color_temp: 500
+    target:
+      area_id: home
+  mode: single
+- id: '1661840231007'
+  alias: Sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      color_temp: 500
+      brightness_pct: 100
+      transition: 300
+    target:
+      area_id: home
+  mode: single
+- id: '1661840860898'
+  alias: Wind Down 2230
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:30:00'
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      transition: 1800
+      brightness_pct: 13
+      rgb_color:
+      - 255
+      - 0
+      - 0
+    target:
+      area_id: home
+  mode: single
+- id: '1661842565552'
+  alias: Lights out 2355
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:55:00'
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      transition: 300
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 0
+    target:
+      area_id: home
+  mode: single

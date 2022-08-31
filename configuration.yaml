@@ -1,0 +1,90 @@
+# default_config:
+automation: !include automations.yaml
+backup:
+#bluetooth:
+#camera:
+config:
+counter:
+#dhcp:
+#energy:
+frontend:
+group: !include groups.yaml
+history:
+homeassistant:
+  name: Home
+  latitude: !secret lat
+  longitude: !secret long
+  elevation: !secret elevation
+  unit_system: imperial
+  time_zone: "America/Los_Angeles"
+  currency: USD
+image:
+input_boolean:
+input_button:
+input_datetime:
+input_number:
+input_select:
+input_text:
+logbook:
+map:
+media_source:
+mobile_app:
+my:
+network:
+person:
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor:
+- platform: rest
+  resource: http://prometheus-server.prometheus.svc.cluster.local/api/v1/query?query=bme280_temp
+  name: Room Temperature
+  value_template: "{{ value_json.data.result[0].value[1] | round(1) }}"
+  device_class: temperature
+  unit_of_measurement: F
+- platform: rest
+  resource: http://prometheus-server.prometheus.svc.cluster.local/api/v1/query?query=bme280_humidity
+  name: Room Humidity
+  value_template: "{{ value_json.data.result[0].value[1] }}"
+  device_class: humidity
+  unit_of_measurement: "%RH"
+- platform: rest
+  scan_interval: 300
+  resource: "https://query1.finance.yahoo.com/v8/finance/chart/SNOW?region=US&lang=en-US&includePrePost=false&interval=1d&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
+  name: SNOW open
+  value_template: "{{ value_json.chart.result[0].indicators.quote[0].open[0] | round(2) }}"
+  device_class: monetary
+- platform: rest
+  scan_interval: 300
+  resource: "https://query1.finance.yahoo.com/v8/finance/chart/SNOW?region=US&lang=en-US&includePrePost=false&interval=1d&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
+  name: SNOW close
+  value_template: "{{ value_json.chart.result[0].indicators.quote[0].close[0] | round(2) }}"
+  device_class: monetary
+- platform: rest
+  scan_interval: 300
+  resource: "https://query1.finance.yahoo.com/v8/finance/chart/SNOW?region=US&lang=en-US&includePrePost=false&interval=1d&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
+  name: SNOW high
+  value_template: "{{ value_json.chart.result[0].indicators.quote[0].high[0] | round(2) }}"
+  device_class: monetary
+- platform: rest
+  scan_interval: 300
+  resource: "https://query1.finance.yahoo.com/v8/finance/chart/SNOW?region=US&lang=en-US&includePrePost=false&interval=1d&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
+  name: SNOW low
+  value_template: "{{ value_json.chart.result[0].indicators.quote[0].low[0] | round(2) }}"
+  device_class: monetary
+- platform: rest
+  scan_interval: 300
+  resource: "https://query1.finance.yahoo.com/v8/finance/chart/SNOW?region=US&lang=en-US&includePrePost=false&interval=1d&useYfid=true&range=1d&corsDomain=finance.yahoo.com&.tsrc=finance"
+  name: SNOW volume
+  value_template: "{{ value_json.chart.result[0].indicators.quote[0].volume[0] }}"
+ssdp:
+sun:
+system_health:
+tag:
+timer:
+tts:
+  - platform: google_translate
+#usb:
+webhook:
+zeroconf:
+zone:
+

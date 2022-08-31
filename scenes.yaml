@@ -1,0 +1,33 @@
+- id: '1661842345300'
+  name: Lights off brightness zero
+  entities:
+    scene.home_nightlight:
+      group_name: Home
+      group_type: zone
+      name: Nightlight
+      speed: 0.6031746031746031
+      brightness: 0
+      is_dynamic: false
+      friendly_name: Home Nightlight
+      state: '2022-08-30T06:18:18.469882+00:00'
+    light.home:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      is_hue_group: true
+      hue_scenes:
+      - Nightlight
+      hue_type: zone
+      lights:
+      - Bed Right
+      - TV left
+      - Bed Left
+      - TV right
+      dynamics: false
+      icon: mdi:lightbulb-group
+      friendly_name: Home
+      supported_features: 40
+      state: 'off'
+  icon: mdi:lightbulb-group-off
