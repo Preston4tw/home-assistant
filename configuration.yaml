@@ -1,6 +1,9 @@
 # default_config:
 automation: !include automations.yaml
 backup:
+binary_sensor:
+  - platform: workday
+    country: US
 #bluetooth:
 #camera:
 config:
@@ -87,4 +90,3 @@ tts:
 webhook:
 zeroconf:
 zone:
-
