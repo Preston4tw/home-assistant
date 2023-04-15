@@ -2,14 +2,14 @@
   name: Lights off brightness zero
   entities:
     scene.home_nightlight:
-      group_name: Home
+      group_name: All Lights
       group_type: zone
       name: Nightlight
       speed: 0.6031746031746031
       brightness: 0
       is_dynamic: false
-      friendly_name: Home Nightlight
-      state: '2022-08-30T06:18:18.469882+00:00'
+      friendly_name: All Lights Nightlight
+      state: unknown
     light.home:
       min_mireds: 153
       max_mireds: 500
@@ -19,15 +19,66 @@
       is_hue_group: true
       hue_scenes:
       - Nightlight
+      - Rest
+      - Relax
+      - Read
+      - Concentrate
+      - Energize
       hue_type: zone
       lights:
-      - Bed Right
       - TV left
-      - Bed Left
+      - Bed Right
       - TV right
+      - Bed Left
       dynamics: false
       icon: mdi:lightbulb-group
-      friendly_name: Home
+      friendly_name: All Lights
       supported_features: 40
       state: 'off'
+    scene.home_energize:
+      group_name: All Lights
+      group_type: zone
+      name: Energize
+      speed: 0.6031746031746031
+      brightness: 100
+      is_dynamic: false
+      friendly_name: All Lights Energize
+      state: unknown
+    scene.home_concentrate:
+      group_name: All Lights
+      group_type: zone
+      name: Concentrate
+      speed: 0.6031746031746031
+      brightness: 100
+      is_dynamic: false
+      friendly_name: All Lights Concentrate
+      state: unknown
+    scene.home_read:
+      group_name: All Lights
+      group_type: zone
+      name: Read
+      speed: 0.6031746031746031
+      brightness: 100
+      is_dynamic: false
+      friendly_name: All Lights Read
+      state: unknown
+    scene.home_relax:
+      group_name: All Lights
+      group_type: zone
+      name: Relax
+      speed: 0.6031746031746031
+      brightness: 56.3
+      is_dynamic: false
+      friendly_name: All Lights Relax
+      state: unknown
+    scene.home_rest:
+      group_name: All Lights
+      group_type: zone
+      name: Rest
+      speed: 0.6031746031746031
+      brightness: 35.04
+      is_dynamic: false
+      friendly_name: All Lights Rest
+      state: unknown
   icon: mdi:lightbulb-group-off
+  metadata: {}

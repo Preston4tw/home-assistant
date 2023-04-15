@@ -27,7 +27,7 @@
           brightness: 1
           color_temp: 500
         target:
-          area_id: home
+          entity_id: light.home
       - delay:
           hours: 0
           minutes: 0
@@ -39,7 +39,7 @@
       transition: 1800
       color_temp: 500
     target:
-      area_id: home
+      entity_id: light.home
   mode: single
 - id: '1661840231007'
   alias: Sunset
@@ -56,7 +56,7 @@
       brightness_pct: 100
       transition: 300
     target:
-      area_id: home
+      entity_id: light.home
   mode: single
 - id: '1661840860898'
   alias: Wind Down 2230
@@ -64,7 +64,19 @@
   trigger:
   - platform: time
     at: '22:30:00'
-  condition: []
+  condition:
+  - condition: or
+    conditions:
+    - condition: device
+      type: is_on
+      device_id: 323c3f70510f83ff2ef9ab307473c856
+      entity_id: light.bedroom
+      domain: light
+    - condition: device
+      type: is_on
+      device_id: 7aef4abfc65b86368b4e71c7d723e787
+      entity_id: light.room
+      domain: light
   action:
   - service: light.turn_on
     data:
@@ -75,7 +87,7 @@
       - 0
       - 0
     target:
-      area_id: home
+      entity_id: light.home
   mode: single
 - id: '1661842565552'
   alias: Lights out 2355
@@ -94,5 +106,5 @@
       - 0
       brightness_pct: 0
     target:
-      area_id: home
+      entity_id: light.home
   mode: single
