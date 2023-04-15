@@ -14,11 +14,11 @@
       - condition: and
         conditions:
         - condition: state
-          entity_id: light.home
+          entity_id: light.all_lights
           attribute: brightness
           state: 1
         - condition: state
-          entity_id: light.home
+          entity_id: light.all_lights
           attribute: color_temp
           state: 500
       sequence:
@@ -27,7 +27,8 @@
           brightness: 1
           color_temp: 500
         target:
-          entity_id: light.home
+          entity_id:
+          - light.all_lights
       - delay:
           hours: 0
           minutes: 0
@@ -39,7 +40,8 @@
       transition: 1800
       color_temp: 500
     target:
-      entity_id: light.home
+      entity_id:
+      - light.all_lights
   mode: single
 - id: '1661840231007'
   alias: Sunset
@@ -56,7 +58,8 @@
       brightness_pct: 100
       transition: 300
     target:
-      entity_id: light.home
+      entity_id:
+      - light.all_lights
   mode: single
 - id: '1661840860898'
   alias: Wind Down 2230
@@ -87,7 +90,8 @@
       - 0
       - 0
     target:
-      entity_id: light.home
+      entity_id:
+      - light.all_lights
   mode: single
 - id: '1661842565552'
   alias: Lights out 2355
@@ -106,5 +110,6 @@
       - 0
       brightness_pct: 0
     target:
-      entity_id: light.home
+      entity_id:
+      - light.all_lights
   mode: single
